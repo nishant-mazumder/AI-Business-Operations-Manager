@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f8fafc] text-slate-800 antialiased font-sans selection:bg-blue-100 selection:text-blue-900;
+  }
+}
+
+/* Custom scrollbar for clean UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Recharts tooltip styling fix */
+.recharts-default-tooltip {
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+  padding: 10px 14px !important;
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Print utilities for Reports and Audit Statements */
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm 15mm;
+  }
+
+  /* Completely remove shell navigation, headers, modals, and elements marked no-print */
+  nav,
+  aside,
+  header,
+  .no-print,
+  [data-print-hidden="true"],
+  .toast-container {
+    display: none !important;
+  }
+
+  /* Reset layout constraints so report document prints cleanly across pages */
+  html,
+  body,
+  #root,
+  .h-screen,
+  .w-screen,
+  main,
+  div {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Make the printable report fill 100% width cleanly */
+  .printable-document {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  /* Ensure table rows and summary blocks do not break awkwardly */
+  tr,
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+
+/* ==========================================================================
+   Dark Mode Universal System Overrides (when <html class="dark"> is active)
+   ========================================================================== */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark .bg-\[\#f8fafc\] {
+  background-color: #0b0f19 !important;
+}
+
+html.dark aside,
+html.dark header,
+html.dark .bg-white,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90,
+html.dark .bg-white\/80 {
+  background-color: #111827 !important;
+  color: #f1f5f9;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-100 {
+  background-color: #1f293d !important;
+  color: #e2e8f0;
+}
+
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-100:hover {
+  background-color: #1f293d !important;
+}
+
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-300 {
+  border-color: #27354f !important;
+}
+
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #27354f !important;
+}
+
+html.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-800 {
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.dark input[type="text"],
+html.dark input[type="number"],
+html.dark input[type="email"],
+html.dark input[type="password"],
+html.dark select,
+html.dark textarea {
+  background-color: #1b2436 !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark select option,
+html.dark select optgroup {
+  background-color: #111827 !important;
+  color: #f8fafc !important;
+}
+
+html.dark input::placeholder {
+  color: #64748b !important;
+}
+
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/70,
+html.dark .bg-blue-50\/60,
+html.dark .bg-blue-50\/50,
+html.dark .bg-blue-50\/40 {
+  background-color: rgba(30, 58, 138, 0.3) !important;
+  color: #93c5fd !important;
+}
+
+html.dark .text-blue-700,
+html.dark .text-blue-800 {
+  color: #93c5fd !important;
+}
+
+html.dark .shadow-card,
+html.dark .shadow-card-hover,
+html.dark .shadow-dropdown {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45) !important;
+}
+
+html.dark .recharts-default-tooltip {
+  background-color: rgba(17, 24, 39, 0.96) !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* Dark mode gradient & banner legibility overrides */
+html.dark .from-blue-50 {
+  --tw-gradient-from: #0f172a var(--tw-gradient-from-position) !important;
+}
+html.dark .via-indigo-50 {
+  --tw-gradient-via-stops: var(--tw-gradient-from), #131c31 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+html.dark .to-white {
+  --tw-gradient-to: #0f172a var(--tw-gradient-to-position) !important;
+}
+html.dark .from-amber-50 {
+  --tw-gradient-from: #1c1917 var(--tw-gradient-from-position) !important;
+}
+html.dark .to-orange-50\/50 {
+  --tw-gradient-to: rgba(41, 37, 36, 0.5) var(--tw-gradient-to-position) !important;
+}
+html.dark .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.45) !important;
+  color: #bfdbfe !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
